@@ -6,7 +6,7 @@ Generate sql file for MYOB TAB seperated file exports.
 USAGE
 -----
 
-	./tab2sql {sourcefile} {tablename}
+	./tab2sql.sh {sourcefile} {tablename}
 
 Generates statements to insert into {tablename} using {sourcefile}
 Statements are saved to {tablename}.sql
@@ -22,3 +22,15 @@ FEATURES
 
 	* MYOB exports columns with non unique names. tab2sql adds a
 	  suitable prefix. e.g. line2 becomes addr1line2.
+
+	* Columns are VARCHAR with length determined by the longest
+	  field + 10. If the column ends in id column will be INT.
+
+TODO
+----
+
+	* Handle columns longer than 255.
+
+	* Handle more data types.
+
+	* Determine if column should be index.
