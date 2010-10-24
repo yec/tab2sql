@@ -20,4 +20,5 @@ FEATURES
 
 	* Column names to alphanumeric and lowercase.
 
-	* MYOB exports columns with non unique names. tab2sql adds a suitable prefix. e.g. line2 becomes addr1line2.
+	* MYOB exports columns with non unique names. tab2sql adds a
+	  suitable prefix. e.g. line2 becomes addr1line2.
