@@ -1,0 +1,23 @@
+TAB2SQL
+-------
+
+Generate sql file for MYOB TAB seperated file exports.
+
+USAGE
+-----
+
+	./tab2sql {sourcefile} {tablename}
+
+Generates statements to insert into {tablename} using {sourcefile}
+Statements are saved to {tablename}.sql
+
+To enter into mysql
+
+	mysql -u{username} -p{password} {database} < {tablename}.sql
+
+FEATURES
+--------
+
+	* Column names to alphanumeric and lowercase.
+
+	* MYOB exports columns with non unique names. tab2sql adds a suitable prefix. e.g. line2 becomes addr1line2.
