@@ -12,17 +12,29 @@ BEGIN {
 	gsub(/\r|\n|\"/,"",$0);
 }
 
+# This part formats the columns to prevent duplicates
+
 (NR == 1) {
 	for ( i=1 ; i <= NF ; i++ )
 	{
-		if($i ~ /Addr/) { addr = substr($i,0,6);}
-		if (($i ~ /(Line|City|State|Postcode|Country|Phone|Fax|Email|WWW|Contact|Salutation)/) && ($i !~ /Line 1/)) {$i = addr $i;}
+		if($i ~ /-/)
+		{
+			split($i,arr,"-");
 
-		if($i ~ /Terms/) { addr = substr($i,0,7);}
-		if ($i ~ /(Discount|Due Days|Charge)/) {$i = addr $i;}
+			if ( arr[1] ~ /\w/ )
+			{	pre = arr[1];	}
+			else
+			{	$i = pre arr[2];	}
+		}
 	}
+
+	# Make column names lower case. remove tolower if want original case.
+	#
+	# print $0;
+	# print toupper($0);
 	print tolower($0);
 }
+
 (NR > 1) {print}
 
 ' \
